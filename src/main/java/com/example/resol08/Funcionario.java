@@ -11,19 +11,17 @@ package com.example.resol08;
  */
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 @Data
-@Entity
 public class Funcionario {
     
-    private @Id @GeneratedValue Long id;
+    private @Id Long id;
     private String nome;
     private int idade;
     private float salario;
+    
+    Funcionario(){}
     
     Funcionario(String nome, int idade, float salario){
         this.nome = nome;
