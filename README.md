@@ -5,7 +5,7 @@ $ mvn clean spring-boot:run
 
 As instruções seguem o modelo descrito abaixo:
 
-método  | URl                 | JSON de retorno|Finalidade
+método  | URl                 | JSON de retorno                                           | Finalidade
 GET     | /funcionarios       | [{"id":<value>,"nome":<>,"idade":<>,"salario":<>},{...}]  |
 POST    | /funcionarios       | [{"id":<value>,"nome":<>,"idade":<>,"salario":<>},{...}]
 PUT     | /funcionarios/{id}  |
