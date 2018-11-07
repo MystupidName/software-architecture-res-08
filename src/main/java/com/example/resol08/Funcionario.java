@@ -16,14 +16,15 @@ import org.springframework.data.annotation.Id;
 @Data
 public class Funcionario {
     
-    private @Id Long id;
+    private Long id;
     private String nome;
     private int idade;
     private float salario;
     
     Funcionario(){}
     
-    Funcionario(String nome, int idade, float salario){
+    Funcionario(Long id, String nome, int idade, float salario){
+        this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.salario = salario;

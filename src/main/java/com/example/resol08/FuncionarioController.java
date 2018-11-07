@@ -33,24 +33,25 @@ public class FuncionarioController {
     }
         
     @PostMapping("/funcionarios")
-    public String create(@RequestBody Map<String, String> body){
+    public String create(@RequestBody Funcionario body){
         Funcionario novoFunc = new Funcionario();
-        novoFunc.setNome(body.get("nome"));
-        novoFunc.setIdade(Integer.parseInt(body.get("idade")));
-        novoFunc.setSalario(Float.parseFloat(body.get("salario")));
+        novoFunc.setId(body.getId());
+        novoFunc.setNome(body.getNome());
+        novoFunc.setIdade(body.getIdade());
+        novoFunc.setSalario(body.getSalario());
         funcionarios.add(novoFunc);
         return "localhost:8080/funcionarios";
     }
     
     @PutMapping("/funcionarios/update/{id}")
-    public String updateById(@PathVariable String id, @RequestBody Map<String, String> body){
+    public String updateById(@PathVariable String id, @RequestBody Funcionario body){
         for (Funcionario f : funcionarios){
-            if(f.getId() == Integer.parseInt(body.get("id"))){
+            if(f.getId() == body.getId()){
                 Funcionario temp = new Funcionario();
                 temp.setId(Long.parseLong(id));
-                temp.setNome(body.get("nome"));
-                temp.setIdade(Integer.parseInt(body.get("idade")));
-                temp.setSalario(Float.parseFloat(body.get("salario")));
+                temp.setNome(body.getNome());
+                temp.setIdade(body.getIdade());
+                temp.setSalario(body.getSalario());
                 funcionarios.set(Integer.parseInt(id), temp);
                 break;
             }
@@ -62,16 +63,14 @@ public class FuncionarioController {
     public String delete(@PathVariable String id){
         long tempVar = Long.parseLong(id);
         long fID = -1;
-        Funcionario tempObj = new Funcionario();
         for (Funcionario f : funcionarios){
             if(f.getId() == tempVar){
                 fID = tempVar;
-                tempObj = f;
             }
         }
         
         if(fID != -1){
-            funcionarios.remove(tempObj);
+            funcionarios.remove(fID);
         }
    
         return "localhost:8080/funcionarios";
